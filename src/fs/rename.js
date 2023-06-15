@@ -14,7 +14,7 @@ const rename = async () => {
   try {
       await fs.promises.access(newFilePath);
       console.log('FS operation failed');
-    } catch {
+    } catch (err) {
       try { 
         await fs.promises.access(filePath);
           fs.rename(filePath,newFilePath, () => {} );
