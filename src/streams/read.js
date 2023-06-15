@@ -4,11 +4,10 @@ import { fileURLToPath } from 'url';
 
 const read = async () => {
     const file = 'fileToRead.txt';
-    const dir = 'files'
+    const folder = 'files'
 
-    const readFilePath = fileURLToPath(import.meta.url);
-    const directory = path.dirname(readFilePath);
-    const filePath = path.join(directory, dir, file);
+    const directory = path.dirname(fileURLToPath(import.meta.url));
+    const filePath = path.join(directory, folder, file);
   
   try {
     const readableStream = fs.createReadStream(filePath);

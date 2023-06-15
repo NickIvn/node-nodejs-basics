@@ -4,11 +4,10 @@ import { fileURLToPath } from 'url';
 
 const write = async () => {
     const file = 'fileToWrite.txt';
-    const dir = 'files'
+    const folder = 'files'
 
-    const writeFilePath = fileURLToPath(import.meta.url);
-    const directory = path.dirname(writeFilePath);
-    const filePath = path.join(directory, dir, file);
+    const directory = path.dirname(fileURLToPath(import.meta.url));
+    const filePath = path.join(directory, folder, file);
     
     try {
         const writableStream = fs.createWriteStream(filePath);

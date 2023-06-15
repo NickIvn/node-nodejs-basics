@@ -6,8 +6,7 @@ import { fileURLToPath } from 'url';
 
 const performCalculations = async () => {
     const worker = 'worker.js';
-    const mainFilePath = fileURLToPath(import.meta.url);
-    const dir = path.dirname(mainFilePath);
+    const dir = path.dirname(fileURLToPath(import.meta.url));
     const workerPath = path.join(dir, worker);
 
 

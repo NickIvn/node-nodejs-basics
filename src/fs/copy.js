@@ -7,8 +7,7 @@ const copy = async () => {
     const source = 'files';
     const target = 'files_copy';
 
-    const copyFilePath = fileURLToPath(import.meta.url);
-    const directory = path.dirname(copyFilePath);
+    const directory = path.dirname(fileURLToPath(import.meta.url));
     const sourcePath = path.join(directory, source);
     const targetPath = path.join(directory, target);
   

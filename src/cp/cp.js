@@ -6,8 +6,8 @@ import { fileURLToPath } from 'url';
 const spawnChildProcess = async (args) => {
     const file = 'script.js';
     const folder = 'files';
-    const cpFilepath = fileURLToPath(import.meta.url);
-    const dir = path.dirname(cpFilepath);
+    
+    const dir = path.dirname(fileURLToPath(import.meta.url));
     const filePath = path.join(dir, folder, file);
 
   const childProcess = spawn('node', [filePath, ...args], {

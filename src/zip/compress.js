@@ -7,12 +7,11 @@ import { fileURLToPath } from 'url';
 const compress = async () => {
     const inputFile= 'fileToCompress.txt';
     const outputFile = 'archive.gz';
-    const dir = 'files';
+    const folder = 'files';
 
-    const compressFilePath = fileURLToPath(import.meta.url);
-    const directory = path.dirname(compressFilePath);
-    const inputFilePath = path.join(directory, dir, inputFile);
-    const outputFilePath = path.join(directory, dir, outputFile);
+    const directory = path.dirname(fileURLToPath(import.meta.url));
+    const inputFilePath = path.join(directory, folder, inputFile);
+    const outputFilePath = path.join(directory, folder, outputFile);
   
     const readStream = fs.createReadStream(inputFilePath);
     const writeStream = fs.createWriteStream(outputFilePath);

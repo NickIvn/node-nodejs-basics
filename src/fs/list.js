@@ -5,11 +5,10 @@ import { fileURLToPath } from 'url';
 
 const list = async () => {
 
-    const dir = 'files';
+    const folder = 'files';
 
-    const listFilePath = fileURLToPath(import.meta.url);
-    const folderDir = path.dirname(listFilePath);
-    const folderPath = path.join(folderDir,dir);
+    const folderDir = path.dirname(fileURLToPath(import.meta.url));
+    const folderPath = path.join(folderDir,folder);
 
     try {
         const items = await fs.promises.readdir(folderPath);

@@ -5,11 +5,11 @@ import { fileURLToPath } from 'url';
 
 const calculateHash = async () => {
 
-  const file = './fileToCalculateHashFor.txt';
-  const dir = '/files';
-  const calcHashPath = fileURLToPath(import.meta.url);
-  const directory = path.dirname(calcHashPath);
-  const filePath = path.join(directory, dir, file);
+  const file = 'fileToCalculateHashFor.txt';
+  const folder = 'files';
+  
+  const directory = path.dirname(fileURLToPath(import.meta.url));
+  const filePath = path.join(directory, folder, file);
 
   try {
     const fileData = await fs.promises.readFile(filePath);

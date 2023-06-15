@@ -4,11 +4,10 @@ import { fileURLToPath } from 'url';
 
 const remove = async () => {
   const file = 'fileToRemove.txt';
-  const dir = 'files';
+  const folder = 'files';
 
-  const removeFilePath = fileURLToPath(import.meta.url);
-  const directory = path.dirname(removeFilePath);
-  const filePath = path.join(directory,dir,file);
+  const directory = path.dirname(fileURLToPath(import.meta.url));
+  const filePath = path.join(directory,folder,file);
 
   try {
     await fs.promises.unlink(filePath);

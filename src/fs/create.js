@@ -4,12 +4,11 @@ import { fileURLToPath } from 'url';
 
 const create = async () => {
   const file = 'fresh.txt';
-  const dir = 'files';
+  const folder = 'files';
   const content = 'I am fresh and young';
 
-  const createFilePath = fileURLToPath(import.meta.url);
-  const directory = path.dirname(createFilePath);
-  const filePath = path.join(directory, dir, file);
+  const directory = path.dirname(fileURLToPath(import.meta.url));
+  const filePath = path.join(directory, folder, file);
 
   try {
     await fs.promises.writeFile(filePath, content, { flag: 'wx' });
