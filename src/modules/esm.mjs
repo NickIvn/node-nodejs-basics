@@ -1,20 +1,22 @@
 import path from 'path';
-import os from 'os';
-import http from 'http';
-import './files/c.js';
-import a from './files/a.json' assert { type: 'json' };
-import b from './files/b.json' assert { type: 'json' };
-
-const { release, version } = os;
+import { release, version } from 'os';
+import { createServer as createServerHttp } from 'http';
+import { readFile } from 'fs/promises';
 
 const random = Math.random();
 
 let unknownObject;
 
-if (random > 0.5) {
-  unknownObject = a;
-} else {
-  unknownObject = b;
+try {
+  if (random > 0.5) {
+    unknownObject = await readFile(new URL('files/a.json',import.meta.url), 'utf-8');
+  } else {
+    unknownObject = await readFile(new URL('files/b.json',import.meta.url), 'utf-8');
+  }
+
+  console.log(unknownObject);
+} catch (error) {
+  console.error('Error reading JSON file:', error);
 }
 
 console.log(`Release ${release()}`);
@@ -24,13 +26,11 @@ console.log(`Path segment separator is "${path.sep}"`);
 console.log(`Path to current file is ${import.meta.url}`);
 console.log(`Path to current directory is ${path.dirname(import.meta.url)}`);
 
-const myServer = http.createServer((_, res) => {
+const myServer = createServerHttp((_, res) => {
   res.end('Request accepted');
 });
 
 const PORT = 3000;
-
-console.log(unknownObject);
 
 myServer.listen(PORT, () => {
   console.log(`Server is listening on port ${PORT}`);
